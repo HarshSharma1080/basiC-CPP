@@ -3,7 +3,6 @@
 
 ///////This program allocated 10*4 = 40 bytes in the heap memory using malloc and then 
 ///////the for loop puts 10 values in the pointers
-
 int main(){
     int *ptr;
     ptr = (int *)malloc(10*sizeof(int));
@@ -13,9 +12,7 @@ int main(){
     }
     free(ptr);
 }
-
 //////////////////printing and storing numbers 1 to n in the heap using malloc and pointers /////////////////////
-
 // int main(){
 //     int *ptr;
 //     int length = 100, num = 1;
@@ -26,8 +23,3 @@ int main(){
 //         num++;
 //     }
 // }
-
-
-
-
-
