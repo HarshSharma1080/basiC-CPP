@@ -2,7 +2,8 @@
 #include<stdlib.h>
 
 ///////This program allocated 10*4 = 40 bytes in the heap memory using malloc and then 
-///////the for loop puts 10 values in the pointers 
+///////the for loop puts 10 values in the pointers
+
 int main(){
     int *ptr;
     ptr = (int *)malloc(10*sizeof(int));
