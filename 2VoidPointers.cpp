@@ -14,6 +14,8 @@ void printData(void *x, char i){
     }
 }
 
+
+
 int main(){
     int value = 123;
     printData(&value, 'i');
