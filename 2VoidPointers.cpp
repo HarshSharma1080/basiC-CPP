@@ -13,9 +13,6 @@ void printData(void *x, char i){
         printf("Invalid data type");
     }
 }
-
-
-
 int main(){
     int value = 123;
     printData(&value, 'i');
