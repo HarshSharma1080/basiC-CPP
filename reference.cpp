@@ -4,7 +4,7 @@ int main(){
     int age = 10;
     int &r = age;
 
-    // added to keep track
+    // added 
 
     cout <<  "age = " << age << endl;
     cout << "r = " << r << endl;
