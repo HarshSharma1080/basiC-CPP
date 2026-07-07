@@ -4,8 +4,6 @@ int main(){
     int age = 10;
     int &r = age;
 
-    // added 
-
     cout <<  "age = " << age << endl;
     cout << "r = " << r << endl;
 
