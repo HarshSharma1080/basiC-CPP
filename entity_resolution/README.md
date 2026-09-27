@@ -13,25 +13,73 @@ This repository now includes a complete end-to-end, dependency-free ER pipeline 
   - `output/matching_results.tsv`
 - Validates output format/rules with a local validator
 
-## Run
+## Is the model already trained?
 
-From repository root:
+No. There is no pre-trained model file in this project.
 
-```bash
-python3 entity_resolution/run_pipeline.py \
-  --data-root /absolute/path/to/dataset \
-  --output-dir /absolute/path/to/output
-```
-
-`--data-root` must contain:
+`entity_resolution/run_pipeline.py` trains the model every time you run it by using:
 
 - `train/train_source1.tsv`
 - `train/train_source2.tsv`
 - `train/train_source3.tsv`
 - `train/train_ground_truth.tsv`
-- `test/test_source1.tsv`
-- `test/test_source2.tsv`
-- `test/test_source3.tsv`
+
+Then it applies that trained model to the test set and writes output files.
+
+## Step-by-step: run everything from scratch
+
+### 1) Prepare your dataset folder
+
+Create a folder that contains this structure:
+
+```text
+<DATA_ROOT>/
+  train/
+    train_source1.tsv
+    train_source2.tsv
+    train_source3.tsv
+    train_ground_truth.tsv
+  test/
+    test_source1.tsv
+    test_source2.tsv
+    test_source3.tsv
+```
+
+### 2) Go to repository root
+
+```bash
+cd /absolute/path/to/basiC-CPP
+```
+
+### 3) Run the pipeline (this includes training)
+
+```bash
+python3 entity_resolution/run_pipeline.py \
+  --data-root /absolute/path/to/<DATA_ROOT> \
+  --output-dir /absolute/path/to/output
+```
+
+Optional (for reproducibility):
+
+```bash
+python3 entity_resolution/run_pipeline.py \
+  --data-root /absolute/path/to/<DATA_ROOT> \
+  --output-dir /absolute/path/to/output \
+  --seed 42
+```
+
+When complete, you should see:
+
+```text
+Pipeline complete. Selected threshold=<value>
+```
+
+### 4) Check generated files
+
+The run creates:
+
+- `/absolute/path/to/output/candidate_pairs.tsv`
+- `/absolute/path/to/output/matching_results.tsv`
 
 ## Validate submission files
 
@@ -43,3 +91,9 @@ python3 utils/validate_submission.py \
 ```
 
 It prints `PASS` when files satisfy challenge constraints.
+
+## Do I need to train manually?
+
+No extra training command is needed.
+
+Training is built into the same `run_pipeline.py` command, so just run that once with the correct `--data-root` and `--output-dir`.
